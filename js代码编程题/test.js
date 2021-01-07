@@ -19,6 +19,7 @@ function QuickSort(arr) {
     return QuickSort(leftArr).concat([indexValue], QuickSort(rightArr))
 }
 
+// 插入排序
 function InsertSort(arr) {
     var index, temp
     for (let i = 1; i < arr.length; i++) {
@@ -82,8 +83,6 @@ function FindMax(str) {
 
     console.log("最大值" + maxValue + "出现了" + maxNum + "次")
 }
-
-
 
 FindMax("112233555544444444444555554");
 
