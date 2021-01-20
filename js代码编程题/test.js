@@ -41,21 +41,21 @@ function PopSort(arr) {
     console.log(arr);
     // var flag = false;
     for (let i = 0; i < arr.length - 1; i++) {
-        var flag = false
+        // var flag = false
         for (let j = 0; j < arr.length - i - 1; j++) {
             console.log("我循环了")
             if (arr[j] > arr[j + 1]) {
-                flag = true
+                // flag = true
                 var temp = arr[j]
                 arr[j] = arr[j + 1]
                 arr[j + 1] = temp
             }
 
         }
-        if (flag == false) {
-            console.log("我跳了")
-            break;
-        }
+        // if (flag == false) {
+        //     console.log("我跳了")
+        //     break;
+        // }
     }
     return arr;
 }
@@ -127,3 +127,74 @@ var r = arr.filter(function (item, index, self) {
 
 console.log(r);
 
+// 大数相加
+var BigNumberAdd = function (a, b) {
+    var res = "";
+    var loc = 0;
+    a = a.split('');
+    b = b.split('');
+    while (a.length || b.length || loc) {
+        loc += ~~a.pop() + ~~b.pop();
+        res = (loc % 10) + res;
+        loc = loc > 9
+    }
+    return res;
+}
+
+BigNumberAdd("111", "22222")
+
+
+// 1. 用JS写一个函数，对数字数组去重，输入：[1,1,2,2,3]，输出：[1,2,3]
+
+
+// (1)Set去重
+function fn1(arr) {
+    return Array.from(new Set([...arr]));
+}
+
+fn1([1,1,2,2,3])
+
+// indexOf()去重
+function fn2(arr) {
+    var newarr = [];
+    for(var i = 0;i<arr.length;i++){
+        if(newarr.indexOf(arr[i]) == -1){
+            newarr.push(arr[i])
+        }
+    }
+    return newarr;
+}
+
+fn2([1,1,2,2,3])
+
+// 2. 用JS写一个函数，对对象数组去重，输入: [{id:1},{id:1},{id:2}]，输出: [{id:1},{id:2}]
+
+function fn(obj){
+    var newObj = []
+    for(index of obj){
+        // console.log(index);
+        // console.log(obj);
+        if(newObj.indexOf(index) == -1){
+            newObj.push(index)
+        }
+    }   
+    return newObj
+}
+
+console=(fn([{id1:1},{id2:2},{id2:2}]));
+
+// 3. 用JS写一个函数，进行字符串大数相加，输入'56789'+'56789'，输出'113578'
+var AddNumber = function (a, b) {
+    var local = 0;
+    var res = "";
+    a = a.split("");
+    b = b.split("");
+    while (a.length || b.length || local) {
+        local += ~~a.pop() + ~~b.pop();
+        res = (local % 10) + res;
+        local = local > 9;
+    }
+    return res;
+}
+
+console.log(AddNumber("9999", "99999"));
